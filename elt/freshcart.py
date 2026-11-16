@@ -553,9 +553,12 @@ def connect():
     global conn
     import snowflake.connector
     options = dict(account=os.environ['SNOWFLAKE_ACCOUNT'],
-                   user=os.environ['SNOWFLAKE_USER'],role='ACCOUNTADMIN',
+                   user=os.environ['SNOWFLAKE_USER'],role=os.environ.get('SNOWFLAKE_ROLE','SYSADMIN'),
                    client_store_temporary_credential=False)
-    if os.environ.get('SNOWFLAKE_AUTHENTICATOR') == 'externalbrowser':
+    method = os.environ.get('SNOWFLAKE_AUTHENTICATOR','').lower()
+    if method == 'oauth_authorization_code':
+        options['authenticator'] = 'oauth_authorization_code'
+    elif method == 'externalbrowser':
         options['authenticator'] = 'externalbrowser'
         options['disable_console_login'] = False
     else:
