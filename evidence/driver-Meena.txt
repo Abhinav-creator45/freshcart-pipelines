@@ -1,0 +1,18 @@
+READY Meena bangalore.*.food
+ACK Meena probe-food bangalore.koramangala.food
+ACK Meena order-002 bangalore.koramangala.food
+DISCARD Meena order-010 bangalore.koramangala.food requeue=False
+ACK Meena order-011 bangalore.koramangala.food
+ACK Meena order-016 bangalore.whitefield.food
+DISCARD Meena order-020 bangalore.koramangala.food requeue=False
+ACK Meena order-021 bangalore.koramangala.food
+DISCARD Meena order-030 bangalore.koramangala.food requeue=False
+ACK Meena order-032 bangalore.koramangala.food
+DISCARD Meena order-040 bangalore.koramangala.food requeue=False
+ACK Meena order-044 bangalore.koramangala.food
+ACK Meena order-049 bangalore.indiranagar.food
+DISCARD Meena order-050 bangalore.koramangala.food requeue=False
+ACK Meena order-051 bangalore.whitefield.food
+ACK Meena order-053 bangalore.whitefield.food
+ACK Meena order-056 bangalore.whitefield.food
+DISCARD Meena order-060 bangalore.koramangala.food requeue=False
