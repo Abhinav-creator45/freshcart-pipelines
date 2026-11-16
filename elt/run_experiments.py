@@ -70,4 +70,6 @@ if __name__=='__main__':
     try:
         for label,fn in [('B1-baseline',baseline),('B2-trace',trace),('B3-currency',validation),('B4-history',history),('B5-quality',quality)]:capture(label,fn)
     finally:
-        f.query('ALTER WAREHOUSE FRESHCART_WH SUSPEND');f.conn.close()
+        try: f.query('ALTER WAREHOUSE ABHINAV_LAB_WH SUSPEND')
+        except Exception: pass
+        f.conn.close()
