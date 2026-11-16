@@ -1,0 +1,34 @@
+{
+  "recorded_before_experiments_utc": "2026-11-16T14:29:54.143392+00:00",
+  "preparation": "AI-assisted pre-run expectations for student review",
+  "B4": {
+    "history_rows_CUST02": 2,
+    "ORD1002_tier": "Gold",
+    "ORD1002_points": 70,
+    "gold_total_points": 161,
+    "changed_published_at_rows": 1
+  },
+  "D1": {
+    "bangalore.koramangala.food": [
+      "Ravi",
+      "Meena",
+      "Control"
+    ],
+    "bangalore.indiranagar.ride": [
+      "Priya",
+      "Arjun",
+      "Control"
+    ],
+    "bangalore.whitefield.ride": [
+      "Arjun",
+      "Control"
+    ],
+    "chennai.tnagar.food": [
+      "Karthik"
+    ],
+    "chennai.whitefield.ride": [],
+    "bangalore.koramangala": [
+      "Control"
+    ]
+  }
+}
