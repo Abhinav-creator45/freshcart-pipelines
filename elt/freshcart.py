@@ -554,7 +554,7 @@ def connect():
     import snowflake.connector
     options = dict(account=os.environ['SNOWFLAKE_ACCOUNT'],
                    user=os.environ['SNOWFLAKE_USER'],role=os.environ.get('SNOWFLAKE_ROLE','SYSADMIN'),
-                   client_store_temporary_credential=False)
+                   client_store_temporary_credential=False,external_browser_timeout=1800)
     method = os.environ.get('SNOWFLAKE_AUTHENTICATOR','').lower()
     if method == 'oauth_authorization_code':
         options['authenticator'] = 'oauth_authorization_code'
