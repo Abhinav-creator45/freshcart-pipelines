@@ -1,0 +1,18 @@
+{
+  "Ravi": {
+    "ack_count": 11,
+    "discard_count": 6,
+    "probe_food_received": true
+  },
+  "Meena": {
+    "ack_count": 11,
+    "discard_count": 6,
+    "probe_food_received": true
+  },
+  "Control": {
+    "ack_count": 33,
+    "discard_count": 6,
+    "probe_food_received": true
+  },
+  "elapsed_line": "FINISHED 60 messages 120.005 seconds"
+}
