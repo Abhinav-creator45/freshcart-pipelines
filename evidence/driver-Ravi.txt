@@ -1,0 +1,18 @@
+READY Ravi bangalore.koramangala.*
+ACK Ravi probe-food bangalore.koramangala.food
+ACK Ravi order-002 bangalore.koramangala.food
+ACK Ravi order-006 bangalore.koramangala.ride
+DISCARD Ravi order-010 bangalore.koramangala.food requeue=False
+ACK Ravi order-011 bangalore.koramangala.food
+DISCARD Ravi order-020 bangalore.koramangala.food requeue=False
+ACK Ravi order-021 bangalore.koramangala.food
+ACK Ravi order-025 bangalore.koramangala.ride
+ACK Ravi order-027 bangalore.koramangala.ride
+DISCARD Ravi order-030 bangalore.koramangala.food requeue=False
+ACK Ravi order-032 bangalore.koramangala.food
+DISCARD Ravi order-040 bangalore.koramangala.food requeue=False
+ACK Ravi order-044 bangalore.koramangala.food
+ACK Ravi order-047 bangalore.koramangala.ride
+DISCARD Ravi order-050 bangalore.koramangala.food requeue=False
+ACK Ravi order-059 bangalore.koramangala.ride
+DISCARD Ravi order-060 bangalore.koramangala.food requeue=False
