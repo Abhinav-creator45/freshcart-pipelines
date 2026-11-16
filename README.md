@@ -4,14 +4,18 @@ CS-8037 Data Engineering. This repository contains the mandatory coursework comp
 
 ## Files for evaluation
 
-- **Report PDF:** `23BCS006_Abhinav_Harsh_Pipelines.pdf`, to be attached directly in Google Classroom.
-- **FreshCart ELT:** `elt/freshcart.py` and `elt/run_experiments.py`; the executed notebook will be `elt/FreshCart_Pipeline.ipynb`.
+- **Report PDF:** `23BCS006_Abhinav_Harsh_Pipelines.pdf`, provided as a PDF attachment in Google Classroom.
+- **FreshCart ELT:** `elt/freshcart.py` and `elt/run_experiments.py`; the notebook with real outputs is `elt/FreshCart_Pipeline.ipynb`.
 - **Mage project and executed notebook:** `iris_project/` and `iris_project/Iris_Pipeline.ipynb`.
 - **RabbitMQ:** `stream/dispatcher.py`, `stream/driver.py`, and the repeatable `stream/run_lab.py`.
 - **Predictions:** `predictions.json`, recorded in the initial commit before the experiments.
 - **Actual run logs:** `evidence/`.
 
-Current preparation status: Git/CI, Mage and RabbitMQ are verified. The personal Snowflake account signup is blocked, so the mandatory live ELT runs and final report are still pending. **The assignment has not been turned in.**
+**Verified evidence:** passing/failing CI and fix, five Mage depth experiments, the real Cloudflare graph, the two-minute RabbitMQ run, and all five live Snowflake experiments.
+
+**Account requirement exception:** New-account signup failed with both email addresses and the Google route. With the owner’s permission, fresh experiments ran in `FRESHCART23BCS006` and `ABHINAV_LAB_WH` on a provided existing trial. This differs from the assignment’s own-account requirement; the report discloses it. The screenshots show the actual results without altering the account identity or numbers.
+
+The live FreshCart notebook ran inside Snowflake Workspaces using an authenticated Snowpark session. Snowpark PUT uploaded each raw file; COPY and transformation SQL retained the course logic. Because the native Workspace download omits stored outputs, the exported notebook restores its captured real stdout and result bundle for review.
 
 ## Reproduce
 
@@ -26,7 +30,9 @@ python iris_project/depth_experiment.py
 
 The CI deliberately failed at `1792fc7` with `test_size=0.3`, and passed after the fix at `d61302a` restored `test_size=0.2`. The actual Actions run screenshots are prepared for the report appendix.
 
-For FreshCart, use a fresh personal trial and set the non-secret account identifier and username through `SNOWFLAKE_ACCOUNT` and `SNOWFLAKE_USER`. Run `python -m elt.run_experiments`; it asks for the password through a hidden prompt. The baseline expects a clean sample database. Each subsequent extraction appends eight raw orders; gold is deduplicated and merged by order ID. B5 removes only its named synthetic `ORD-FX-TEST` order after proving the new check fails.
+For the local FreshCart CLI, use a fresh authorized namespace and set the non-secret account identifier and username through `SNOWFLAKE_ACCOUNT` and `SNOWFLAKE_USER`. Run `python -m elt.run_experiments`; it asks for the password through a hidden prompt. The baseline expects a clean sample database. Each subsequent extraction appends eight raw orders; gold is deduplicated and merged by order ID. B5 removes only its named synthetic `ORD-FX-TEST` order after proving the new check fails.
+
+For the live Snowflake notebook, import it into Snowflake Workspaces and connect an authorized notebook service. It uses `get_active_session()` and the included `snowpark_adapter.py`; no password or token is embedded. Baseline counts require an empty assignment database. The report and saved outputs cover the original first run and subsequent history/quality experiments.
 
 For the local stream experiment:
 
