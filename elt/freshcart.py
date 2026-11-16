@@ -151,12 +151,12 @@ SQL_00_SETUP = r"""
 -- Setup: creates the warehouse, database, schemas and empty tables.
 -- Safe to re-run: everything is IF NOT EXISTS, except the two small seed tables.
 -- =====================================================================
-CREATE WAREHOUSE IF NOT EXISTS FRESHCART_WH
+CREATE WAREHOUSE IF NOT EXISTS ABHINAV_LAB_WH
   WAREHOUSE_SIZE = 'XSMALL' AUTO_SUSPEND = 60 AUTO_RESUME = TRUE INITIALLY_SUSPENDED = TRUE;
-USE WAREHOUSE FRESHCART_WH;
+USE WAREHOUSE ABHINAV_LAB_WH;
 
-CREATE DATABASE IF NOT EXISTS FRESHCART;
-USE DATABASE FRESHCART;
+CREATE DATABASE IF NOT EXISTS FRESHCART23BCS006;
+USE DATABASE FRESHCART23BCS006;
 
 CREATE SCHEMA IF NOT EXISTS bronze;      -- raw API responses, unchanged
 CREATE SCHEMA IF NOT EXISTS silver;      -- cleaned, typed, deduplicated
@@ -552,9 +552,13 @@ SQL_10_ORDERS_CLEAN = SQL_10_ORDERS_CLEAN.replace(
 def connect():
     global conn
     import snowflake.connector
-    conn = snowflake.connector.connect(
-        account=os.environ['SNOWFLAKE_ACCOUNT'],
-        user=os.environ['SNOWFLAKE_USER'],
-        password=getpass('Snowflake password (hidden): '),
-        role='ACCOUNTADMIN')
+    options = dict(account=os.environ['SNOWFLAKE_ACCOUNT'],
+                   user=os.environ['SNOWFLAKE_USER'],role='ACCOUNTADMIN',
+                   client_store_temporary_credential=False)
+    if os.environ.get('SNOWFLAKE_AUTHENTICATOR') == 'externalbrowser':
+        options['authenticator'] = 'externalbrowser'
+        options['disable_console_login'] = False
+    else:
+        options['password'] = getpass('Snowflake password (hidden): ')
+    conn = snowflake.connector.connect(**options)
     return conn
