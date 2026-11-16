@@ -1,0 +1,150 @@
+{
+  "B1-baseline": {
+    "counts": {
+      "bronze.orders_raw": 8,
+      "silver.orders_clean": 6,
+      "quarantine.orders": 2,
+      "silver.orders_dedup": 4
+    },
+    "gold": [
+      4,
+      "7785.00",
+      126
+    ]
+  },
+  "B2-trace": {
+    "raw": [
+      [
+        "mobile",
+        "{\n  \"customer\": {\n    \"email\": \"Meera@Outlook.com\",\n    \"name\": \"Meera S\"\n  },\n  \"deliveryPin\": \"400050\",\n  \"orderDate\": \"02/09/2026\",\n  \"orderId\": \"ORD-1003\",\n  \"total\": {\n    \"currency\": \"INR\",\n    \"value\": \"2,100.00\"\n  },\n  \"updatedAt\": \"2026-09-02T18:40:00\"\n}"
+      ],
+      [
+        "web",
+        "{\n  \"amount\": null,\n  \"currency\": \"INR\",\n  \"cust_email\": \"meera@outlook.com\",\n  \"cust_name\": \"MEERA S\",\n  \"order_date\": \"2026-09-02\",\n  \"order_id\": \"ORD-1003\",\n  \"pincode\": \"400050\",\n  \"updated_at\": \"2026-09-02 09:10:00\"\n}"
+      ]
+    ],
+    "gold": [
+      [
+        "ORD-1001",
+        "2026-09-01",
+        "CUST-01",
+        "priya.r@gmail.com",
+        "Silver",
+        1,
+        "1250.00",
+        "INR",
+        "1.0000",
+        "1250.00",
+        12,
+        false,
+        "Chennai",
+        "Tamil Nadu",
+        "South",
+        "2026-09-01 10:02:00",
+        4284627330879666700,
+        "2026-11-16 08:00:47.773000-08:00"
+      ],
+      [
+        "ORD-1003",
+        "2026-09-02",
+        "CUST-03",
+        "meera@outlook.com",
+        "Platinum",
+        3,
+        "2100.00",
+        "INR",
+        "1.0000",
+        "2100.00",
+        63,
+        true,
+        "Mumbai",
+        "Maharashtra",
+        "West",
+        "2026-09-02 18:40:00",
+        -1632326326823866000,
+        "2026-11-16 08:00:47.773000-08:00"
+      ],
+      [
+        "ORD-1005",
+        "2026-09-03",
+        "CUST-01",
+        "priya.r@gmail.com",
+        "Gold",
+        2,
+        "899.00",
+        "INR",
+        "1.0000",
+        "899.00",
+        16,
+        false,
+        "Chennai",
+        "Tamil Nadu",
+        "South",
+        "2026-09-03 16:45:00",
+        -231880702048109570,
+        "2026-11-16 08:00:47.773000-08:00"
+      ]
+    ]
+  },
+  "B3-currency": {
+    "before": [
+      [
+        "web",
+        "[\n  \"bad_email\",\n  \"bad_pincode\"\n]"
+      ]
+    ],
+    "after": [
+      [
+        "web",
+        "[\n  \"unsupported_currency\",\n  \"bad_email\",\n  \"bad_pincode\"\n]"
+      ]
+    ],
+    "quarantine_rows": 1,
+    "gold": [
+      4,
+      "7785.00",
+      126
+    ]
+  },
+  "B4-history": {
+    "history": [
+      [
+        "CUST-02",
+        "arjun.k@yahoo.in",
+        "Silver",
+        "2024-01-15",
+        "2026-08-14",
+        false
+      ],
+      [
+        "CUST-02",
+        "arjun.k@yahoo.in",
+        "Gold",
+        "2026-08-15",
+        "9999-12-31",
+        true
+      ]
+    ],
+    "order": [
+      "Gold",
+      70
+    ],
+    "gold": [
+      4,
+      "7785.00",
+      161
+    ],
+    "changed": 1,
+    "rerun_bronze_growth": 8,
+    "rerun_published_changed": 0
+  },
+  "B5-quality": {
+    "failing_value": 1,
+    "restored_value": 0,
+    "final_gold": [
+      4,
+      "7785.00",
+      161
+    ]
+  }
+}
